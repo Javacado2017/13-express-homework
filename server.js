@@ -5,12 +5,11 @@ var path = require('path');
 
 //Express App
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
 //Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 //Routing
 require('./app/routes/apiRoutes.js')(app); 
