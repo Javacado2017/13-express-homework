@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friend Finder</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <h1>Friend Finder App</h1>
+    <p>Instructions: Complete the survey to find a friend.</p>
+    <div id='serverLinks'></div>
+    <hr>
+
+    <div id='populateSurvey'>
+        <div id='surveyNew'></div>
+        <br>
+        
+        <div id='mainContent'></div>
+        <br>
+
+        <div id='surveySubmit'></div>
+        <br>
+    </div>
+
+    <script>
+
+    //Function to start Friend Finder App
+    function friendFinderApp() {
+
+        surveyStart();
+
+    };
+    friendFinderApp(); 
+
+    //Function to start new survey 
+    function surveyStart() {
+        $('#surveyNew').addClass('button').append('<button>New Survey</button>');
+
+        $('button').click(function() {
+            $('#mainContent').html('');
+            $('#surveyNew').html('');
+            surveySubmit();
+            surveyQuestions();
+        });
+
+    };
+
+    //Function to submit survey 
+    function surveySubmit(){
+
+        $('#surveySubmit').addClass('button').append('<button>Submit</button>');
+
+        $('button').click(function() {
+            $('#surveyNew').html('');
+            $('#surveySubmit').html('');
+            $('#mainContent').html('');
+            surveyStart();
+            surveyResults();
+        });
+
+    };
+
+    //Sets the number of questions and possible answers the survey will have (so it can be easily changed whenever)
+    var numberQuestions = 5
+    var numberAnswers = 5
+
+    //Function to create the questions with answers
+    function surveyQuestions() {
+
+            //Add section enter name and photo
+            var aboutMe = 
+            '<p>Name: <input id="name"></p>' +
+            '<p>Photo URL: <input id="photo"></p><br>'
+        
+            $('#mainContent').append(aboutMe);
+
+
+            for (var i=0; i < numberQuestions; i++){
+
+                var surveyScores=''
+                for (var a = 0; a < numberAnswers; a++) {
+                    surveyScores += '<input type="radio" name="' + i + '" value="' + (a+1) + '">' +  (a+1)
+                };
+
+                $('#mainContent').append(
+                    '<p>' + (i+1) + ') ' + questionSet[i].description + '</p>' + '<p> strongly aggree' + surveyScores + ' strongly disaggree </p><br>'               
+                );           
+            
+            };
+
+    };
+    
+    //Function to generate the results of the survey
+    function surveyResults(){
+
+
+
+    };
+
+
+    //This defines the questions that will be asked in the survey. 
+    var questionSet = [
+        {
+            'number': '1',
+            'description': 'Question 1 details here?'
+        },
+        {
+            'number': '2',
+            'description': 'Question 2 details here?'
+        },
+        {
+            'number': '3',
+            'description': 'Question 3 details here?'
+        },
+        {
+            'number': '4',
+            'description': 'Question 4 details here?'
+        },
+        {
+            'number': '5',
+            'description': 'Question 5 details here?'
+        },
+        {
+            'number': '6',
+            'description': 'Question 6 details here?'
+        },
+        {
+            'number': '7',
+            'description': 'Question 7 details here?'
+        },
+        {
+            'number': '8',
+            'description': 'Question 8 details here?'
+        },
+        {
+            'number': '9',
+            'description': 'Question 9 details here?'
+        },
+        {
+            'number': '10',
+            'description': 'Question 10 details here?'
+        }
+    ];
+
+    </script>
+
+
+</body>
+</html>
